@@ -25,3 +25,26 @@ CREATE TABLE `Tasks` (
   `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 ```
+
+### Configure config.php file
+
+Change the values in the config.php file to match your needs :
+
+```php
+$tinytask_email = "example@example.com";  								//email that runs script
+$tinytask_title = "Tiny Task - Simple Task Management";     			//Site title
+$tinytask_introduction = "Welcome to Tiny Tasks' Task Management page";	//introduction on main task page
+
+// Database configuration
+$tinytask_db_user = "example_user";							//database account user name
+$tinytask_db_pass = "example_pass";							//password for database user account
+$tinytask_db_name = "example_database_name";				//the name of the database
+
+// Convert timestamps on task list to correct time zone
+// (see - https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+$tinytask_timezone_server = "US/Pacific";		//Region the Tiny Task is hosed
+$tinytask_timezone_users = "Asia/Kuala_Lumpur";	//Region the Tiny Task is used in
+```
+
+### Congratulations
+Tiny Task is now ready to use.  Browse to the location of the <i>index.php</i> file using your prefered browser and share this location with your team. Begin creating tasks and checking them off at your desktop, on your phone, and anywhere you have access to email or a web browser! Let us know how your team enjoys Tiny Task [admin@sambwa.com]
