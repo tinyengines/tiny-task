@@ -47,4 +47,4 @@ $tinytask_timezone_users = "Asia/Kuala_Lumpur";	//Region the Tiny Task is used i
 ```
 
 ### Congratulations
-Tiny Task is now ready to use.  Browse to the location of the <i>index.php</i> file using your prefered browser and share this location with your team. Begin creating tasks and checking them off at your desktop, on your phone, and anywhere you have access to email or a web browser! Let us know how your team enjoys Tiny Task [admin@sambwa.com] <i>Regards to Yo! Baba at <a href="thenounproject.com">The Noun Project</a> for the logo design</i>
+Tiny Task is now ready to use.  Browse to the location of the <i>index.php</i> file using your prefered browser and share this location with your team. Begin creating tasks and checking them off at your desktop, on your phone, and anywhere you have access to email or a web browser! Let us know how your team enjoys Tiny Task [admin@sambwa.com] <i>Regards to Yo! Baba at <a href="https://thenounproject.com/search/?q=task&i=1022926">The Noun Project</a> for the Task Icon</i>
