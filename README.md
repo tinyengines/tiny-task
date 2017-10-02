@@ -31,13 +31,13 @@ CREATE TABLE `Tasks` (
 Change the values in the config.php file to match your needs :
 
 ```php
-$tinytask_email = "example@example.com";    //email that runs script
-$tinytask_title = "Tiny Task - Simple Task Management"; //Site title
+$tinytask_email = "example@example.com";        //email that runs script
+$tinytask_title = "Tiny Task - Simple Task Management";     //Site title
 $tinytask_introduction = "Welcome to Tiny Tasks' Task Management page";	//introduction on main task page
 
 // Database configuration
-$tinytask_db_user = "example_user";         //database account user name
-$tinytask_db_pass = "example_pass";	    //password for database user account
+$tinytask_db_user = "example_user";             //database account user name
+$tinytask_db_pass = "example_pass";	        //password for database user account
 $tinytask_db_name = "example_database_name";    //the name of the database
 
 // Convert timestamps on task list to correct time zone
