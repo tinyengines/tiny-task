@@ -103,7 +103,7 @@
 							    if ($row_users['Completed'] == 0) {
 								    echo "<a href='javascript:void(0)' style='border: 0;' id=".$row_users['ID']." class='del'>&nbsp;&nbsp;<img src='./assets/complete.png' style='display: inline-block; width:20px;'></a>";
 							    }  else {
-								    echo "<a href='javascript:void(0)' style='border: 0;' id=".$row_users['ID']." class='remove'>&nbsp;&nbsp;<img src='./assets/delete.png' style='display: inline-block; width:20px;'></a>";
+								    echo "<a href='javascript:void(0)' style='border: 0;' id=".$row_users['ID']." class='remove'>&nbsp;&nbsp;<img src='./assets/delete.png' style='display: inline-block; width:20px; opacity: 0.5;'></a>";
 							    }
 							    echo "</span><br/>";
 							}
