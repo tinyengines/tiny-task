@@ -3,9 +3,6 @@
 	
 	<meta name="viewport" content="width=device-width">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<!--[if lt IE 9]>
-	<script src="http://the102.sambwa.com/wp-content/themes/twentyfifteen/js/html5.js"></script>
-	<![endif]-->
 	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
 	<link rel="dns-prefetch" href="http://fonts.googleapis.com/">
 	<link rel="dns-prefetch" href="http://s.w.org/">
@@ -94,18 +91,19 @@
 
 							    //output a row here
 							    if ($row_users['Completed'] == 1) {
-							    	echo "<span class='done' id=outer".$row_users['ID'].">";
+							    	echo "<span class='done' id=outer".$row_users['ID']." style='display: inline-block;'>";
 							    } else {
-							    	echo "<span id=outer".$row_users['ID'].">";
+							    	echo "<span id=outer".$row_users['ID']." style='display: inline-block;'>";
 							    }
 
 							    echo "<span class='date' style='font-size: 100%; color: #aaa;'>". $timeform ."</span>&nbsp;&nbsp;<span class='message'>".($row_users['Label'])." </span>&nbsp;&nbsp;<span class='from' style='color: #aaa;'>". $row_users['From_Email'] ."</span>";
 							    if ($row_users['Completed'] == 0) {
-								    echo "<a href='javascript:void(0)' style='border: 0;' id=".$row_users['ID']." class='del'>&nbsp;&nbsp;<img src='./assets/complete.png' style='display: inline-block; width:20px;'></a>";
-							    }  else {
-								    echo "<a href='javascript:void(0)' style='border: 0;' id=".$row_users['ID']." class='remove'>&nbsp;&nbsp;<img src='./assets/delete.png' style='display: inline-block; width:20px; opacity: 0.5;'></a>";
-							    }
-							    echo "</span><br/>";
+								    echo "<a href='javascript:void(0)' style='display: inline-block; border: 0;' id=".$row_users['ID']." class='del'>&nbsp;&nbsp;<img src='./assets/complete.png' style='display: inline-block; width:20px;'></a>";
+								    echo "<a href='javascript:void(0)' style='border: 0; display: none' id=".$row_users['ID']." class='remove'>&nbsp;&nbsp;<img src='./assets/delete.png' style='display: inline-block; width:20px; opacity: 0.5;'></a>";
+								} else {
+									echo "<a href='javascript:void(0)' style='border: 0;' id=".$row_users['ID']." class='remove'>&nbsp;&nbsp;<img src='./assets/delete.png' style='display: inline-block; width:20px; opacity: 0.5;'></a>";
+								}
+							    echo "<br/></span>";
 							}
 							mysqli_close($con);
 							?>
@@ -136,21 +134,38 @@ jQuery(document).ready(function($){
 	$(".del").live("click",function(){
 		ajax("delete",$(this).attr("id"));
 	});
+
+	$(".remove").live("click",function(){
+		ajax("remove",$(this).attr("id"));
+	});
  
 	function ajax(action,id){
 		if(action == "delete"){
 			data = "id="+id;
+			url = "./complete.php"
+		}
+
+		if(action == "remove"){
+			data = "deleteItem="+id;
+			url = "./delete.php"
 		}
  
 		$.ajax({
 			type: "POST", 
-			url: "./complete.php", 
+			url: url, 
 			data : data,
 			dataType: "json",
 			success: function(response){
-				var row_id = id;
-				$("a[id='"+row_id+"']").fadeOut();
-				$("span[id='outer"+row_id+"']").addClass('done');
+				if(action == "delete"){
+					var row_id = id;
+					$("a[id='"+row_id+"'].del").css('display','none');
+					$("a[id='"+row_id+"'].remove").css('display','inline-block');
+					$("span[id='outer"+row_id+"']").addClass('done');
+				}
+				if(action == "remove"){
+					var row_id = id;
+					$("span[id='outer"+row_id+"']").remove();
+				}
 			},
 			error: function(res){
 				//alert("Unexpected error! Try again.");
