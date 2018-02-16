@@ -11,7 +11,7 @@
     {
       $delete = $_POST['deleteItem'];
 
-      $delquery=mysqli_query($con,"DELETE FROM `Bugs` WHERE ID=".$delete) or die(mysqli_error($con));
+      $delquery=mysqli_query($con,"DELETE FROM Tasks WHERE ID=".$delete) or die(mysqli_error($con));
     }
 
     mysqli_close($con);
